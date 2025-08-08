@@ -798,7 +798,7 @@ Rigidbody:
   m_GameObject: {fileID: 796400506}
   serializedVersion: 4
   m_Mass: 1
-  m_Drag: 0
+  m_Drag: 5
   m_AngularDrag: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -869,15 +869,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _OrientationTranform: {fileID: 921232426}
+  _movementKey: 101
   _movementSpeed: 30
   _jumpKey: 32
   _jumpforce: 8
   _jumpCooldown: 0.5
   _canjump: 1
+  _slideKey: 113
+  _slideMultiplier: 2
+  _slideDrag: 2
   _playerHeight: 1
   _groundLayer:
     serializedVersion: 2
     m_Bits: 64
+  _groundDrag: 5
 --- !u!1 &832575517
 GameObject:
   m_ObjectHideFlags: 0
