@@ -5,8 +5,10 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
 
-public class PlayerConter : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
+    public event Action OnPlayerJumped;
+
     [Header("Refererances")]
     [SerializeField] private Transform _OrientationTranform;
 
@@ -14,7 +16,7 @@ public class PlayerConter : MonoBehaviour
     [SerializeField] private KeyCode _movementKey;
     [SerializeField] private float _movementSpeed;
 
-    [Header("Jump Settings")]
+    [Header("Jump Settings")] 
     [SerializeField] private KeyCode _jumpKey;
     [SerializeField] private float _jumpforce;
     [SerializeField] private float _jumpCooldown;
@@ -148,6 +150,7 @@ public class PlayerConter : MonoBehaviour
 
     private void SetPlayerJumping()
     {
+        OnPlayerJumped?.Invoke();
         _PlayerRigidbody.linearVelocity = new Vector3(_PlayerRigidbody.linearVelocity.x, 0f, _PlayerRigidbody.linearVelocity.z);
         _PlayerRigidbody.AddForce(transform.up * _jumpforce, ForceMode.Impulse);
     }
