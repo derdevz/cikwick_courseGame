@@ -2,16 +2,22 @@ using UnityEngine;
 
 public class ThirdPersonCamera : MonoBehaviour
 {
-    [Header("Referances")]
+    [Header("REFERENCES")]
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private Transform _orientationTransform;
     [SerializeField] private Transform _playerVisualTransform;
 
-    [Header("Settings")]
+    [Header("SETTINGS")]
     [SerializeField] private float _rotationSpeed;
 
     private void Update()
     {
+        if (GameManager.Instance.GetCurrentGameState() != GameState.Play
+            && GameManager.Instance.GetCurrentGameState() != GameState.Resume)
+        {
+            return;
+            }
+
         Vector3 wievDirection
         = _playerTransform.position - new Vector3(transform.position.x, _playerTransform.position.y, transform.position.z);
 

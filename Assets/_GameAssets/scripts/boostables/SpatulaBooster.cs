@@ -2,10 +2,10 @@ using UnityEngine;
 
 public class SpatulaBooster : MonoBehaviour, IBoostable
 {
-    [Header("References")]
+    [Header("REFERENCES")]
     [SerializeField] private Animator _spatulaAnimator;
 
-    [Header("Settings")]
+    [Header("SETTINGS")]
     [SerializeField] private float _jumpforce;
 
     private bool _isActivated;
