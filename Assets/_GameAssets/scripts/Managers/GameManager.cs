@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
 
     [Header("REFERENCES")]
     [SerializeField] private EggCounterUI _eggCounterUI;
+    [SerializeField] private WinLoseUI _winLoseUI;
 
     [Header("SETTİNGS")]
     [SerializeField] private int _maxEggCount = 5;
@@ -42,6 +43,7 @@ public class GameManager : MonoBehaviour
         {
             _eggCounterUI.SetEggCopleted();
             ChangedGameStated(GameState.Gameover);
+            _winLoseUI.OnGameWin();
         }
     }
 
