@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour
             && GameManager.Instance.GetCurrentGameState() != GameState.Resume)
         {
             return;
-            }
+        }
 
         SetInputs();
         SetStates();
@@ -74,8 +74,8 @@ public class PlayerController : MonoBehaviour
             && GameManager.Instance.GetCurrentGameState() != GameState.Resume)
         {
             return;
-            }
-            
+        }
+
         SetPlayerMovement();
     }
 
@@ -221,9 +221,25 @@ public class PlayerController : MonoBehaviour
 
     public Rigidbody GetPlayerRigidbody()
     {
-        return _PlayerRigidbody; 
+        return _PlayerRigidbody;
     }
 
+    public bool CanCatChase()
+    {
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit,
+        _playerHeight * 0.5f + 0.2f, _groundLayer))
+        {
+            if (hit.collider.gameObject.layer == LayerMask.NameToLayer(Consts.Layers.FLOOR_LAYER))
+            {
+                return true;
+            }
+            else if (hit.collider.gameObject.layer == LayerMask.NameToLayer(Consts.Layers.GROUND_LAYER))
+            {
+                return false;
+            }
+        }
+        return false;
+    }
 
 
 }
