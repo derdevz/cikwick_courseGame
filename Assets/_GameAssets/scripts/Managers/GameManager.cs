@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using TMPro;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float _delay;
 
     private int _currentEggCount;
+    private bool _isCatCatched;
 
     private GameState _currentGameState;
 
@@ -35,13 +37,18 @@ public class GameManager : MonoBehaviour
 
     private void CatController_OnCatCatched()
     {
-        _playerHealthUI.AnimateDamageForAll();
-        StartCoroutine(OnGameOver());
+        if (!_isCatCatched)
+        {
+            _playerHealthUI.AnimateDamageForAll();
+            StartCoroutine(OnGameOver());
+            CameraShake.Instance.ShakeCamera(1.7f, 2f, 0.4f);
+            _isCatCatched = true;
+        }
     }
 
     private void HealthManager_OnPlayerDeath()
     {
-         StartCoroutine(OnGameOver());
+        StartCoroutine(OnGameOver());
     }
 
     private void OnEnable()
