@@ -4,7 +4,6 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Playables;
-
 public class PlayerController : MonoBehaviour
 {
     public event Action OnPlayerJumped;
@@ -36,12 +35,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float _groundDrag;
 
     private StateController _stateController;
-
     private Rigidbody _PlayerRigidbody;
-
     private float _startingMovementSpeed, _startingJumpForce;
-
-
     private float _horizontalInput, _verticalInput;
     private Vector3 _MovemenetDirection;
     private bool _isSliding;
@@ -96,10 +91,10 @@ public class PlayerController : MonoBehaviour
 
         else if (Input.GetKey(_jumpKey) && _canjump && IsGrounded())
         {
-            //ZIPLAMA İŞLEMİ GERÇEKLEŞECEK!
             _canjump = false;
             SetPlayerJumping();
             Invoke(nameof(ResetJumping), _jumpCooldown);
+            AudioManager.Instance.Play(SoundType.JumpSound);
         }
 
     }
