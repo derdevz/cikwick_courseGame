@@ -50,7 +50,7 @@ The project includes two main scenes:
 
 Main gameplay scripts are located under:
 
-
+```txt
 Assets/_GameAssets/scripts
 
 Some important systems:
